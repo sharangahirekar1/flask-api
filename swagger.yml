@@ -20,6 +20,14 @@ components:
           type: "string"
         lname:
           type: "string"
+  parameters:
+    lname:
+      name: "lname"
+      description: "last name of the person parameter"
+      in: path
+      required: True
+      schema:
+        type: "string"
 
 paths:
   /people:
@@ -49,3 +57,14 @@ paths:
             schema:
               x-body-name: "person"
               $ref: "#/components/schemas/Person"
+  /people/{lname}:
+    get:
+      operationId: people.get_a_person
+      tags:
+        - "Get person by last name"
+      summary: "Getting a single person"
+      parameters:
+        - $ref: "#/components/parameters/lname"
+      responses:
+        "200":
+          description: "Found and sent!"

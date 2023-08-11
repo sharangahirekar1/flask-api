@@ -36,3 +36,9 @@ def add_person (person) :
         return PEOPLE[lname], 201
     else:
         abort(406,f"Person with last name {lname} already exists")
+
+def get_a_person(lname) :
+    if lname in PEOPLE:
+        return PEOPLE[lname]
+    else:
+        abort(404,f"Person with last name {lname} not found")
