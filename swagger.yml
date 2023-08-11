@@ -59,7 +59,7 @@ paths:
               $ref: "#/components/schemas/Person"
   /people/{lname}:
     get:
-      operationId: people.get_a_person
+      operationId: "people.get_a_person"
       tags:
         - "Get person by last name"
       summary: "Getting a single person"
@@ -68,3 +68,29 @@ paths:
       responses:
         "200":
           description: "Found and sent!"
+    put:
+      operationId: "people.update_a_person"
+      tags:
+        - "Update names of a person"
+      summary: "Updating the name of the person by searching last name"
+      parameters:
+        - $ref: "#/components/parameters/lname"
+      responses:
+        "200":
+          description: "Values updated"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "person"
+              $ref: "#/components/schemas/Person"
+    delete:
+      operationId: "people.delete"
+      tags:
+        - "Delete a person from the dataset"
+      summary: "Deleting a person from the dataset"
+      parameters:
+        - $ref: "#/components/parameters/lname"
+      responses:
+        "204":
+          description: "Deleted the person"

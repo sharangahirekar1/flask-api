@@ -1,4 +1,5 @@
 from datetime import datetime
+from flask import abort, make_response
 
 def get_timestamp () :
     return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))
@@ -42,3 +43,19 @@ def get_a_person(lname) :
         return PEOPLE[lname]
     else:
         abort(404,f"Person with last name {lname} not found")
+
+def update_a_person(lname,person):
+    if lname in PEOPLE:
+        PEOPLE[lname]['fname'] = person.get('fname',PEOPLE[lname]['fname'])
+        PEOPLE[lname]['timestamp'] = get_timestamp()
+        return PEOPLE[lname]
+    else:
+        # pass
+        abort(404,f"Person with last name {lname} not found")
+
+def delete(lname):
+    if lname in PEOPLE:
+        del PEOPLE[lname]
+        return make_response(f"Deleted Successfully",204)
+    else:
+        abort(404,f"No person with last name {lname} was found")
