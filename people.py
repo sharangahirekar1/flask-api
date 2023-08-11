@@ -23,3 +23,16 @@ PEOPLE = {
 
 def read_all () :
     return list(PEOPLE.values())
+
+def add_person (person) :
+    lname = person.get("lname")
+    fname = person.get("fname")
+    if lname and lname not in PEOPLE:
+        PEOPLE[lname] = {
+            "lname":lname,
+            "fname":fname,
+            "timestamp": get_timestamp()
+        }
+        return PEOPLE[lname], 201
+    else:
+        abort(406,f"Person with last name {lname} already exists")

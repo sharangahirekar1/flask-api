@@ -31,3 +31,21 @@ paths:
       responses:
         "200":
           description: "Successfully read people list"
+    post:
+      operationId: "people.add_person"
+      tags:
+        - "Add person"
+        - "Peoples"
+        - "More Peoples"
+      summary: "Adding peoples to in-memory database"
+      responses:
+        "201":
+          description: "Added the person!"
+      requestBody:
+        description: "Person to create"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "person"
+              $ref: "#/components/schemas/Person"
