@@ -94,3 +94,14 @@ paths:
       responses:
         "204":
           description: "Deleted the person"
+  /scrape_data:
+    get:
+      operationId: "scrape.scrape"
+      tags:
+        - "Scrape the tech news from times of india"
+      summary: "Scraping tech news"
+      responses:
+        "200":
+          description: "Did and sent"
+
+
