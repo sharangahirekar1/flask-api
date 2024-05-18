@@ -96,7 +96,7 @@ paths:
           description: "Deleted the person"
   /scrape_data:
     get:
-      operationId: "scrape.scrape"
+      operationId: "scrape.scrape_news"
       tags:
         - "Scrape the tech news from times of india"
       summary: "Scraping tech news"
