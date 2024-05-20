@@ -6,6 +6,9 @@ app.add_api("swagger.yml")
 
 @app.route("/")
 def home () : 
+    """
+    Route function to send home html file - defined in templates
+    """
     return render_template("home.html")
 
 if __name__ == "__main__":

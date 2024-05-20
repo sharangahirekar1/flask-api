@@ -7,6 +7,13 @@ import io
 from datetime import date
 
 def scrape_news():
+    """
+    Route function to scrape news using 
+    function scrape(url=string, keyword=string,img=boolean,branch_scrape=boolean)
+    
+    calls scrape
+    returns list(news_data)
+    """
     news_data = []
 
     def scrape(url="https://timesofindia.indiatimes.com/",keyword="tech",img=False,branch_scrape=True):
