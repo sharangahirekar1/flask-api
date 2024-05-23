@@ -1,5 +1,6 @@
 connexion[swagger-ui]==2.14.1
 flask==1.1.2
+Gunicorn
 imageio==2.19.3
 numpy==1.26.4
 pillow==9.2.0
