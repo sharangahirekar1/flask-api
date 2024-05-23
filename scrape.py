@@ -81,7 +81,44 @@ def scrape_news():
                     cv2.destroyAllWindows()
                     break
     
-    scrape()
+    scrape(url="http://www.allevents.in")
     return news_data
                 
-                
+def scrape_allEvents():
+    dict_articles = {}
+    def getSoup(url):
+        page = urlopen(url)
+        html = page.read().decode("utf-8")
+        return BeautifulSoup(html,"html.parser")
+    # file = open(f"wikipedia_scrape_data","w+")
+    def scrapeSite(url,keyword,block):
+        soup = getSoup(url)
+        art = soup.find_all("p")
+        title = soup.find("h1").get_text()
+        article = []
+        for a in art:
+    #         print("itemprop" in a)
+    #         if "itemprop" in a:
+    #             print(article == "description", 'is article')
+    #             if article == "description":
+            article.append(a.get_text())
+        dict_articles[title] = " ".join(article)
+        
+        if url.find(keyword) != -1:
+            pass
+        liTags = soup.find_all("li")
+        
+        for i in range(0,len(liTags)):
+            try:
+                src = liTags[i]["data-link"]
+                print(src)
+    #             if src.find("https://") != -1:
+                scrapeSite(src,keyword="",block=block)
+            except Exception as excp:
+    #             print(excp,"exception")
+                continue
+
+    scrapeSite("https://allevents.in/",keyword="",block=True)
+
+    return dict_articles
+                   
